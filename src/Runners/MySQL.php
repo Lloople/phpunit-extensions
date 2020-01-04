@@ -1,8 +1,9 @@
 <?php
 
-namespace Lloople\PHPUnitExtensions\Log;
+namespace Lloople\PHPUnitExtensions\Runners;
 
 use Exception;
+use Lloople\PHPUnitExtensions\Time;
 use PDO;
 use PHPUnit\Runner\AfterTestHook;
 
@@ -19,9 +20,8 @@ class MySQL implements AfterTestHook
     ];
 
     public function __construct(array $credentials = [])
-    {        
+    {
         try {
-            
             $this->credentials = array_merge($this->credentials, $credentials);
 
             $this->connect();
@@ -29,11 +29,8 @@ class MySQL implements AfterTestHook
             if (! $this->tableExists()) {
                 $this->createTable();
             }
-
-        } catch(Exception $e) {
-            
-            echo "Log: MySQL Extension skipped: {$e->getMessage()}" . PHP_EOL;
-            
+        } catch (Exception $e) {
+            echo "MySQL Runner skipped: {$e->getMessage()}" . PHP_EOL;
         }
     }
 
@@ -44,15 +41,11 @@ class MySQL implements AfterTestHook
         }
 
         try {
-
             $this->insert($test, $time);
-
         } catch (Exception $e) {
-
-            echo "Log: MySQL Extension skipped: {$e->getMessage()}" . PHP_EOL;
+            echo "MySQL Runner skipped: {$e->getMessage()}" . PHP_EOL;
 
             $this->connection = null;
-
         }
     }
 
@@ -67,7 +60,7 @@ class MySQL implements AfterTestHook
                 ON DUPLICATE KEY UPDATE time = :time;"
             )
             ->execute([
-                'time' => $time,
+                'time' => new Time($time),
                 'method' => $method,
                 'class' => $class,
                 'name' => $test,
