@@ -19,7 +19,7 @@ Add the Extension to your `phpunit.xml` file:
 
 ```xml
 <extensions>
-    <extension class="Lloople\PHPUnitExtensions\Log\MySQL">
+    <extension class="Lloople\PHPUnitExtensions\Runners\MySQL">
         <arguments>
             <array>
                 <element key="table">
@@ -31,7 +31,59 @@ Add the Extension to your `phpunit.xml` file:
 </extensions>
 ```
 
+## Extensions
+
+### MySQL
+
+Store the test name and the time into a MySQL database. It will override existing records
+
+```xml
+<extension class="Lloople\PHPUnitExtensions\Runners\MySQL"/>
+```
+
+Default credentials are:
+
+- Database: `phpunit_results`
+- Table: `default`
+- Username: `root`
+- Password: ``
+- Host: `127.0.0.1`
+
+### SQLite
+
+Store the test name and the time into a SQLite database. It will override existing records
+
+```xml
+<extension class="Lloople\PHPUnitExtensions\Runners\SQLite"/>
+```
+
+Default credentials are:
+
+- File: `phpunit_results.db`
+- Table: `default`
+
+## Console
+
+Output the slowest tests on the console.
+
+```xml
+<extension class="Lloople\PHPUnitExtensions\Runners\Console"/>
+```
+
+```
+Showing the top 5 slowest tests:
+  543 ms: Tests\Feature\ProfileTest::can_upload_new_profile_image
+   26 ms: Tests\Feature\ProfileTest::can_visit_profile_page
+   25 ms: Tests\Feature\ProfileTest::throws_validation_error_if_password_not_match
+```
+
+Default options are:
+
+- Rows: `5`
+
 ### Testing
+
+> Under development
 
 ``` bash
 composer test
