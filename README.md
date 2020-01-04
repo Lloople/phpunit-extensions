@@ -5,14 +5,14 @@
 [![Quality Score](https://img.shields.io/scrutinizer/g/lloople/phpunit-extensions.svg?style=flat-square)](https://scrutinizer-ci.com/g/lloople/phpunit-extensions)
 [![Total Downloads](https://img.shields.io/packagist/dt/lloople/phpunit-extensions.svg?style=flat-square)](https://packagist.org/packages/lloople/phpunit-extensions)
 
-This is where your description should go. Try and limit it to a paragraph or two, and maybe throw in a mention of what PSRs you support to avoid any confusion with users and contributors.
+This package provides you a few useful extensions for your testsuite in an effort to improve your code.
 
 ## Installation
 
 You can install the package via composer:
 
 ```bash
-composer require lloople/phpunit-extensions
+composer require lloople/phpunit-extensions --dev
 ```
 
 Add the Extension to your `phpunit.xml` file:
@@ -41,13 +41,13 @@ Store the test name and the time into a MySQL database. It will override existin
 <extension class="Lloople\PHPUnitExtensions\Runners\MySQL"/>
 ```
 
-Default credentials are:
+Default credentials are (as array):
 
-- Database: `phpunit_results`
-- Table: `default`
-- Username: `root`
-- Password: ``
-- Host: `127.0.0.1`
+- database: `phpunit_results`
+- table: `default`
+- username: `root`
+- password: ``
+- host: `127.0.0.1`
 
 ### SQLite
 
@@ -57,10 +57,10 @@ Store the test name and the time into a SQLite database. It will override existi
 <extension class="Lloople\PHPUnitExtensions\Runners\SQLite"/>
 ```
 
-Default credentials are:
+Default credentials are (as array):
 
-- File: `phpunit_results.db`
-- Table: `default`
+- database: `phpunit_results.db`
+- table: `default`
 
 ## Console
 
@@ -79,7 +79,7 @@ Showing the top 5 slowest tests:
 
 Default options are:
 
-- Rows: `5`
+- rows: `5`
 
 ### Testing
 
