@@ -19,55 +19,18 @@ Add the Extension to your `phpunit.xml` file:
 
 ```xml
 <extensions>
-    <extension class="Lloople\PHPUnitExtensions\Runners\MySQL">
-        <arguments>
-            <array>
-                <element key="table">
-                    <string>my_project</string>
-                </element>
-            </array>
-        </arguments>
-    </extension>
+    <extension class="Lloople\PHPUnitExtensions\Runners\SlowestTests\Console" />
 </extensions>
 ```
 
 ## Extensions
-
-### MySQL
-
-Store the test name and the time into a MySQL database. It will override existing records
-
-```xml
-<extension class="Lloople\PHPUnitExtensions\Runners\MySQL"/>
-```
-
-Default credentials are (as array):
-
-- database: `phpunit_results`
-- table: `default`
-- username: `root`
-- password: ``
-- host: `127.0.0.1`
-
-### SQLite
-
-Store the test name and the time into a SQLite database. It will override existing records
-
-```xml
-<extension class="Lloople\PHPUnitExtensions\Runners\SQLite"/>
-```
-
-Default credentials are (as array):
-
-- database: `phpunit_results.db`
-- table: `default`
 
 ## Console
 
 Output the slowest tests on the console.
 
 ```xml
-<extension class="Lloople\PHPUnitExtensions\Runners\Console"/>
+<extension class="Lloople\PHPUnitExtensions\Runners\SlowestTests\Console"/>
 ```
 
 ```
@@ -81,13 +44,56 @@ Default options are:
 
 - rows: `5`
 
-### Testing
+## Csv
 
-> Under development
+Write the tests in a CSV file ready for import.
 
-``` bash
-composer test
+```xml
+<extension class="Lloople\PHPUnitExtensions\Runners\SlowestTests\Csv"/>
 ```
+
+```
+time,method,class,name
+543,can_upload_new_profile_image,Tests\Feature\ProfileTest,Tests\Feature\ProfileTest::can_upload_new_profile_image
+26,can_visit_profile_page,Tests\Feature\ProfileTest,Tests\Feature\ProfileTest::can_visit_profile_page
+25,throws_validation_error_if_password_not_match,Tests\Feature\ProfileTest,Tests\Feature\ProfileTest::throws_validation_error_if_password_not_match
+```
+
+Default options are:
+
+- rows: `5`
+- file: `phpunit_results.csv`
+
+### MySQL
+
+Store the test name and the time into a MySQL database. It will override existing records
+
+```xml
+<extension class="Lloople\PHPUnitExtensions\Runners\SlowestTests\MySQL"/>
+```
+
+Default credentials are (as array):
+
+- rows: `5`
+- database: `phpunit_results`
+- table: `default`
+- username: `root`
+- password: ``
+- host: `127.0.0.1`
+
+### SQLite
+
+Store the test name and the time into a SQLite database. It will override existing records
+
+```xml
+<extension class="Lloople\PHPUnitExtensions\Runners\SlowestTests\SQLite"/>
+```
+
+Default credentials are (as array):
+
+- rows: `5`
+- database: `phpunit_results.db`
+- table: `default`
 
 ### Changelog
 
