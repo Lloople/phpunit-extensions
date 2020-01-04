@@ -13,6 +13,6 @@ class Time
 
     public function __toString(): string
     {
-        return round($this->time * 1000, 2);
+        return (int)($this->time * 1000);
     }
 }
