@@ -1,0 +1,42 @@
+{
+    "name": "lloople/phpunit-extensions",
+    "description": "📦 Some cool extensions for PHPUnit",
+    "keywords": [
+        "lloople",
+        "phpunit-extensions"
+    ],
+    "homepage": "https://github.com/lloople/phpunit-extensions",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "David Llop",
+            "email": "d.lloople@icloud.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.1"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Lloople\\PHPUnitExtensions\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Lloople\\PHPUnitExtensions\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+
+    },
+    "config": {
+        "sort-packages": true
+    }
+}
