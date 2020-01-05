@@ -52,17 +52,23 @@ Write the tests in a CSV file ready for import.
 <extension class="Lloople\PHPUnitExtensions\Runners\SlowestTests\Csv"/>
 ```
 
-```
-time,method,class,name
-543,can_upload_new_profile_image,Tests\Feature\ProfileTest,Tests\Feature\ProfileTest::can_upload_new_profile_image
-26,can_visit_profile_page,Tests\Feature\ProfileTest,Tests\Feature\ProfileTest::can_visit_profile_page
-25,throws_validation_error_if_password_not_match,Tests\Feature\ProfileTest,Tests\Feature\ProfileTest::throws_validation_error_if_password_not_match
+Default options are:
+
+- rows: `5`
+- file: `phpunit_results.csv`
+
+## Json
+
+Write the tests in a JSON file ready for import.
+
+```xml
+<extension class="Lloople\PHPUnitExtensions\Runners\SlowestTests\Json"/>
 ```
 
 Default options are:
 
 - rows: `5`
-- file: `phpunit_results.csv`
+- file: `phpunit_results.json`
 
 ### MySQL
 

@@ -2,11 +2,11 @@
 
 namespace Lloople\PHPUnitExtensions\Runners\SlowestTests;
 
-class Csv extends Channel
+class Json extends Channel
 {
     protected $file;
     
-    public function __construct(int $rows = 5, string $file = 'phpunit_results.csv')
+    public function __construct(int $rows = 5, string $file = 'phpunit_results.json')
     {
         $this->rows = $rows;
         $this->file = $file;
@@ -16,13 +16,20 @@ class Csv extends Channel
     {
         $stream = fopen($this->file, 'w');
 
-        fputcsv($stream, ['time', 'method', 'class', 'name']);
+        $json = [];
 
         foreach ($this->testsToPrint() as $test => $time) {
             [$class, $method] = explode('::', $test);
 
-            fputcsv($stream, [$time, $method, $class, $test]);
+            $json[] = [
+                'time' => $time,
+                'method' => $method,
+                'class' => $class,
+                'name' => $test
+            ];
         }
+
+        fwrite($stream, json_encode($json, JSON_PRETTY_PRINT));
 
         fclose($stream);
     }
