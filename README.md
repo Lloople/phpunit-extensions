@@ -4,6 +4,7 @@
 [![Build Status](https://img.shields.io/travis/lloople/phpunit-extensions/master.svg?style=flat-square)](https://travis-ci.org/lloople/phpunit-extensions)
 [![Quality Score](https://img.shields.io/scrutinizer/g/lloople/phpunit-extensions.svg?style=flat-square)](https://scrutinizer-ci.com/g/lloople/phpunit-extensions)
 [![Total Downloads](https://img.shields.io/packagist/dt/lloople/phpunit-extensions.svg?style=flat-square)](https://packagist.org/packages/lloople/phpunit-extensions)
+[![Buy us a tree](https://img.shields.io/badge/Buy%20James%20a%20tree-🌳-lightgreen)](https://offset.earth/jamesmills)
 
 This package provides you a few useful extensions for your testsuite in an effort to improve your code.
 
@@ -25,7 +26,7 @@ Add the Extension to your `phpunit.xml` file:
 
 ## Extensions
 
-## Console
+### Console
 
 Output the slowest tests on the console.
 
@@ -44,7 +45,7 @@ Default options are:
 
 - rows: `5`
 
-## Csv
+### Csv
 
 Write the tests in a CSV file ready for import.
 
@@ -57,7 +58,7 @@ Default options are:
 - rows: `null` (all the tests)
 - file: `phpunit_results.csv`
 
-## Json
+### Json
 
 Write the tests in a JSON file ready for import.
 
@@ -143,7 +144,7 @@ In the case of the MySQL and SQLite, which needs a database connection, configur
 You don't need to override those credentials that already fit to your 
 usecase, since the class will merge your configuration with the default one
 
-### Changelog
+## Changelog
 
 Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recently.
 
@@ -151,7 +152,7 @@ Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recen
 
 Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 
-### Security
+## Security
 
 If you discover any security related issues, please email d.lloople@icloud.com instead of using the issue tracker.
 
@@ -160,6 +161,10 @@ If you discover any security related issues, please email d.lloople@icloud.com i
 - [David Llop](https://github.com/lloople)
 - [All Contributors](../../contributors)
 
-## License
+## Treeware
 
-The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
+You're free to use this package, but if it is really useful for you I would highly appreciate you buying the world a tree.
+
+It’s now common knowledge that one of the best tools to tackle the climate crisis and keep our temperatures from rising above 1.5C is to plant trees. If you contribute to [James Mill](https://jamesmills.co.uk)'s forest you’ll be creating employment for local families and restoring wildlife habitats.
+
+You can buy trees at for James forest here [offset.earth/jamesmills](https://offset.earth/jamesmills)
