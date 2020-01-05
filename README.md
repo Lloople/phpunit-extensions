@@ -54,7 +54,7 @@ Write the tests in a CSV file ready for import.
 
 Default options are:
 
-- rows: `5`
+- rows: `null` (all the tests)
 - file: `phpunit_results.csv`
 
 ## Json
@@ -67,7 +67,7 @@ Write the tests in a JSON file ready for import.
 
 Default options are:
 
-- rows: `5`
+- rows: `null` (all the tests)
 - file: `phpunit_results.json`
 
 ### MySQL
@@ -80,7 +80,7 @@ Store the test name and the time into a MySQL database. It will override existin
 
 Default credentials are (as array):
 
-- rows: `5`
+- rows: `null` (all the tests)
 - database: `phpunit_results`
 - table: `default`
 - username: `root`
@@ -97,9 +97,51 @@ Store the test name and the time into a SQLite database. It will override existi
 
 Default credentials are (as array):
 
-- rows: `5`
+- rows: `null` (all the tests)
 - database: `phpunit_results.db`
 - table: `default`
+
+## Arguments
+
+To override the default configuration per extension, you need to use `<arguments>`in your `phpunit.xml` file
+
+```xml
+<extension class="Lloople\PHPUnitExtensions\Runners\SlowestTests\Json">
+  <arguments>
+    <integer>10</integer>
+    <string>phpunit_results_as_json.json</string>
+  </arguments>
+</extension>
+```
+
+In the case of the MySQL and SQLite, which needs a database connection, configuration goes as array
+
+<extension class="Lloople\PHPUnitExtensions\Runners\SlowestTests\MySQL">
+  <arguments>
+    <null/> <!-- This allows you to log all the tests -->
+    <array>
+      <element key="database">
+        <string>my_phpunit_results</string>
+      </element>
+      <element key="table">
+        <string>project1_test_results</string>
+      </element>
+      <element key="username">
+        <string>homestead</string>
+      </element>
+      <element key="password">
+        <string>secret</string>
+      </element>
+      <element key="host">
+        <string>192.168.12.14</string>
+      </element>
+    </array>
+  </arguments>
+</extension>
+```
+
+You don't need to override those credentials that already fit to your 
+usecase, since the class will merge your configuration with the default one
 
 ### Changelog
 

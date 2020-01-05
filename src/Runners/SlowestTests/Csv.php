@@ -6,9 +6,10 @@ class Csv extends Channel
 {
     protected $file;
     
-    public function __construct(int $rows = 5, string $file = 'phpunit_results.csv')
+    public function __construct(?int $rows = null, string $file = 'phpunit_results.csv')
     {
-        $this->rows = $rows;
+        parent::__construct($rows);
+
         $this->file = $file;
     }
 

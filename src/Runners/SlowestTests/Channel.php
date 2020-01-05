@@ -11,7 +11,7 @@ abstract class Channel implements AfterTestHook, AfterLastTestHook
 
     protected $rows;
 
-    public function __construct(int $rows = 5)
+    public function __construct(?int $rows = null)
     {
         $this->rows = $rows;
     }
@@ -42,6 +42,10 @@ abstract class Channel implements AfterTestHook, AfterLastTestHook
 
     protected function testsToPrint(): array
     {
+        if ($this->rows === null) {
+            return $this->tests;
+        }
+
         return array_slice($this->tests, 0, $this->rows, true);
     }
 

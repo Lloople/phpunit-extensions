@@ -17,7 +17,7 @@ class MySQL extends Channel
         'host' => '127.0.0.1'
     ];
 
-    public function __construct(int $rows = 5, array $credentials = [])
+    public function __construct(?int $rows = null, array $credentials = [])
     {
         parent::__construct($rows);
 
@@ -45,7 +45,7 @@ class MySQL extends Channel
     protected function createTableIfNotExists(): void
     {
         $this->connection->prepare(
-            "CREATE TABLE IF NOT EXISTS {$this->credentials['table']} (
+            "CREATE TABLE IF NOT EXISTS `{$this->credentials['table']}` (
                 `time` float DEFAULT NULL,
                 `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
                 `method` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,

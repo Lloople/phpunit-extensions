@@ -4,6 +4,12 @@ namespace Lloople\PHPUnitExtensions\Runners\SlowestTests;
 
 class Console extends Channel
 {
+
+    public function __construct(?int $rows = 5)
+    {
+        parent::__construct($rows);
+    }
+    
     protected function printResults(): void
     {
         echo PHP_EOL . "Showing the top {$this->rows} slowest tests:" . PHP_EOL;
