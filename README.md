@@ -43,7 +43,8 @@ Showing the top 5 slowest tests:
 
 Default options are:
 
-- rows: `5`
+- rows: `5` (Report 5 tests max)
+- min: `200` (Report tests slower than 200ms)
 
 ### Csv
 
@@ -55,8 +56,9 @@ Write the tests in a CSV file ready for import.
 
 Default options are:
 
-- rows: `null` (all the tests)
 - file: `phpunit_results.csv`
+- rows: `null` (all the tests)
+- min: `200`
 
 ### Json
 
@@ -68,8 +70,9 @@ Write the tests in a JSON file ready for import.
 
 Default options are:
 
-- rows: `null` (all the tests)
 - file: `phpunit_results.json`
+- rows: `null` (all the tests)
+- min: `200`
 
 ### MySQL
 
@@ -81,12 +84,13 @@ Store the test name and the time into a MySQL database. It will override existin
 
 Default credentials are (as array):
 
-- rows: `null` (all the tests)
 - database: `phpunit_results`
 - table: `default`
 - username: `root`
 - password: ``
 - host: `127.0.0.1`
+- rows: `null` (all the tests)
+- min: `200`
 
 ### SQLite
 
@@ -98,9 +102,10 @@ Store the test name and the time into a SQLite database. It will override existi
 
 Default credentials are (as array):
 
-- rows: `null` (all the tests)
 - database: `phpunit_results.db`
 - table: `default`
+- rows: `null` (all the tests)
+- min: `200`
 
 ## Arguments
 
@@ -109,17 +114,18 @@ To override the default configuration per extension, you need to use `<arguments
 ```xml
 <extension class="Lloople\PHPUnitExtensions\Runners\SlowestTests\Json">
   <arguments>
-    <integer>10</integer>
     <string>phpunit_results_as_json.json</string>
+    <integer>10</integer> <!-- Max number of tests to report. -->
+    <integer>400</integer> <!-- Min miliseconds to report a test. -->
   </arguments>
 </extension>
 ```
 
 In the case of the MySQL and SQLite, which needs a database connection, configuration goes as array
 
+```xml
 <extension class="Lloople\PHPUnitExtensions\Runners\SlowestTests\MySQL">
   <arguments>
-    <null/> <!-- This allows you to log all the tests -->
     <array>
       <element key="database">
         <string>my_phpunit_results</string>
