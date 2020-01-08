@@ -6,7 +6,11 @@ use PDO;
 
 class SQLite extends MySQL
 {
-
+    /**
+     * The credentials needed to connect to the database.
+     *
+     * @var array
+     */
     protected $credentials = [
         'database' => 'phpunit_results.db',
         'table' => 'default',

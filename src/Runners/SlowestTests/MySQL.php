@@ -7,8 +7,18 @@ use PDO;
 
 class MySQL extends Channel
 {
-    protected $connection = null;
+    /**
+     * The connection used to store the results.
+     *
+     * @var PDO
+     */
+    protected $connection;
 
+    /**
+     * The credentials needed to connect to the database.
+     *
+     * @var array
+     */
     protected $credentials = [
         'database' => 'phpunit_results',
         'table' => 'default',
@@ -17,9 +27,9 @@ class MySQL extends Channel
         'host' => '127.0.0.1'
     ];
 
-    public function __construct(?int $rows = null, array $credentials = [])
+    public function __construct( array $credentials = [], ?int $rows = null, ?int $min = 200)
     {
-        parent::__construct($rows);
+        parent::__construct($rows, $min);
 
         try {
             $this->credentials = array_merge($this->credentials, $credentials);
@@ -57,18 +67,12 @@ class MySQL extends Channel
 
     protected function printResults(): void
     {
-        if ($this->connection === null) {
-            return;
-        }
-
-        foreach ($this->testsToPrint() as $test => $time) {
-            try {
+        try {
+            foreach ($this->testsToPrint() as $test => $time) {
                 $this->insert($test, $time);
-            } catch (Exception $e) {
-                echo "{$this->getClassName()} failed: {$e->getMessage()}" . PHP_EOL;
-
-                break;
             }
+        } catch (Exception $e) {
+            echo "{$this->getClassName()} failed: {$e->getMessage()}" . PHP_EOL;
         }
     }
 

@@ -5,16 +5,22 @@ namespace Lloople\PHPUnitExtensions\Runners\SlowestTests;
 class Console extends Channel
 {
 
-    public function __construct(?int $rows = 5)
+    public function __construct(?int $rows = 5, ?int $min = 200)
     {
-        parent::__construct($rows);
+        parent::__construct($rows, $min);
     }
     
     protected function printResults(): void
     {
-        echo PHP_EOL . "Showing the top {$this->rows} slowest tests:" . PHP_EOL;
+        $tests = $this->testsToPrint();
 
-        foreach ($this->testsToPrint() as $test => $time) {
+        if (count($tests) === 0) {
+            return;
+        }
+
+        echo PHP_EOL . 'Slow tests detected: ' . PHP_EOL;
+
+        foreach ($tests as $test => $time) {
             echo str_pad($time, 5, ' ', STR_PAD_LEFT) . " ms: {$test}" . PHP_EOL;
         }
 
