@@ -7,21 +7,45 @@ use PHPUnit\Runner\AfterTestHook;
 
 abstract class Channel implements AfterTestHook, AfterLastTestHook
 {
+    /**
+     * Tests marked as slow.
+     *
+     * @var array
+     */
     protected $tests = [];
 
+    /**
+     * The max number of rows to be reported.
+     *
+     * @var int|null
+     */
     protected $rows;
 
-    public function __construct(?int $rows = null)
+    /**
+     * The minimum amount of miliseconds to consider a test slow.
+     *
+     * @var int|null
+     */
+    protected $min;
+
+    public function __construct(?int $rows = null, ?int $min = 200)
     {
         $this->rows = $rows;
+        $this->min = $min;
     }
 
     public function executeAfterTest(string $test, float $time): void
     {
-        $this->tests[$test] = $this->timeToMiliseconds($time);
+        $time = $this->timeToMiliseconds($time);
+
+        if ($time <= $this->min) {
+            return;
+        }
+        
+        $this->tests[$test] = $time;
     }
 
-    protected function timeToMiliseconds(float $time)
+    protected function timeToMiliseconds(float $time): int
     {
         return (int)($time * 1000);
     }
