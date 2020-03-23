@@ -4,7 +4,7 @@
 [![Build Status](https://img.shields.io/travis/lloople/phpunit-extensions/master.svg?style=flat-square)](https://travis-ci.org/lloople/phpunit-extensions)
 [![Quality Score](https://img.shields.io/scrutinizer/g/lloople/phpunit-extensions.svg?style=flat-square)](https://scrutinizer-ci.com/g/lloople/phpunit-extensions)
 [![Total Downloads](https://img.shields.io/packagist/dt/lloople/phpunit-extensions.svg?style=flat-square)](https://packagist.org/packages/lloople/phpunit-extensions)
-[![Buy us a tree](https://img.shields.io/badge/Buy%20James%20a%20tree-🌳-lightgreen)](https://offset.earth/jamesmills)
+[![Buy us a tree](https://img.shields.io/badge/Buy%20James%20a%20tree-🌳-lightgreen)](https://plant.treeware.earth/Lloople/phpunit-extensions)
 
 This package provides you a few useful extensions for your testsuite in an effort to improve your code.
 
@@ -169,8 +169,11 @@ If you discover any security related issues, please email d.lloople@icloud.com i
 
 ## Treeware
 
-You're free to use this package, but if it is really useful for you I would highly appreciate you buying the world a tree.
+You're free to use this package, but if it is really useful for you I would highly appreciate you [buying the world a tree](https://plant.treeware.earth/Lloople/phpunit-extensions).
 
-It’s now common knowledge that one of the best tools to tackle the climate crisis and keep our temperatures from rising above 1.5C is to plant trees. If you contribute to [James Mill](https://jamesmills.co.uk)'s forest you’ll be creating employment for local families and restoring wildlife habitats.
+It’s now common knowledge that one of the best tools to tackle the climate crisis and keep our temperatures from rising above 1.5C is to plant trees. If you contribute to [Treeware](https://plant.treeware.earth/Lloople/phpunit-extensions)'s forest you’ll be creating employment for local families and restoring wildlife habitats.
 
-You can buy trees at for James forest here [offset.earth/jamesmills](https://offset.earth/jamesmills)
+You can buy trees here [offset.earth/treeware](https://plant.treeware.earth/Lloople/phpunit-extensions)
+
+Read more about Treeware at [treeware.earth](http://treeware.earth)
+
